@@ -28,6 +28,7 @@ package org.cocos2dx.lua;
 
 import android.os.Bundle;
 import org.cocos2dx.lib.Cocos2dxActivity;
+import android.view.WindowManager;
 
 public class AppActivity extends Cocos2dxActivity{
     @Override
@@ -45,5 +46,16 @@ public class AppActivity extends Cocos2dxActivity{
 
         // DO OTHER INITIALIZATION BELOW
         
+        keepScreenOn(true);
+    }
+
+    // 设置屏幕常亮的方法
+    public static void keepScreenOn(boolean keepOn) {
+        AppActivity activity = (AppActivity)Cocos2dxActivity.getContext();
+        if (keepOn) {
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        } else {
+            activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
     }
 }
